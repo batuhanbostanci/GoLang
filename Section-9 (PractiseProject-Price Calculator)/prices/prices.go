@@ -41,6 +41,7 @@ func (job *TaxIncludedPricesJob) LoadData() error {
 	}
 
 	job.InputPrices = prices
+	return nil
 
 }
 
