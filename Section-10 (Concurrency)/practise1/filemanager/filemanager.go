@@ -21,6 +21,8 @@ func (fm FileManager) ReadLines() ([]string, error) {
 		return nil, errors.New("Failed to open file")
 	}
 
+	//When we use defer then file close function go wil check and close the file when it is the correct time arraived we don't need to think and handle the close operations that previous code.
+	defer file.Close()
 	scanner := bufio.NewScanner(file)
 
 	var lines []string
@@ -46,6 +48,7 @@ func (fm FileManager) WriteResult(data interface{}) error {
 		return errors.New("Failed to create file.")
 	}
 
+	defer file.Close()
 	time.Sleep(3 * time.Second)
 
 	encoder := json.NewEncoder(file)
