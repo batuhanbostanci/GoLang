@@ -3,8 +3,8 @@ package prices
 import (
 	"fmt"
 
-	"example.com/price-calculator/conversion"
-	"example.com/price-calculator/iomanager"
+	"example.com/concu/conversion"
+	"example.com/concu/iomanager"
 )
 
 type TaxIncludedPricesJob struct {
@@ -45,12 +45,16 @@ func (job *TaxIncludedPricesJob) LoadData() error {
 
 }
 
-func (job *TaxIncludedPricesJob) Process() error {
+func (job *TaxIncludedPricesJob) Process(doneChan chan bool, errorChan chan error) {
 
 	err := job.LoadData()
 
+	//errorChan <- errors.New("An error!")
+
 	if err != nil {
-		return err
+		//return err
+		errorChan <- err
+		return
 	}
 
 	result := make(map[string]string)
@@ -61,6 +65,8 @@ func (job *TaxIncludedPricesJob) Process() error {
 	}
 
 	job.TaxIncludedPrices = result
-	return job.IOManager.WriteResult(job)
+	job.IOManager.WriteResult(job)
+
+	doneChan <- true
 
 }
