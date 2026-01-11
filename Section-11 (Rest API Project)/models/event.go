@@ -8,10 +8,10 @@ import (
 
 type Event struct {
 	ID          int64
-	Name        string    `binding:"requierd"`
-	Description string    `binding:"requierd"`
-	Location    string    `binding:"requierd"`
-	DateTime    time.Time `binding:"requierd"`
+	Name        string    `binding:"required"`
+	Description string    `binding:"required"`
+	Location    string    `binding:"required"`
+	DateTime    time.Time `binding:"required"`
 	UserID      int
 }
 
