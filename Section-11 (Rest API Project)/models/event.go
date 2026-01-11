@@ -8,10 +8,10 @@ import (
 
 type Event struct {
 	ID          int64
-	Name        string    `binding:requierd`
-	Description string    `binding:requierd`
-	Location    string    `binding:requierd`
-	DateTime    time.Time `binding:requierd`
+	Name        string    `binding:"requierd"`
+	Description string    `binding:"requierd"`
+	Location    string    `binding:"requierd"`
+	DateTime    time.Time `binding:"requierd"`
 	UserID      int
 }
 
@@ -37,7 +37,7 @@ func (e Event) Save() error {
 
 	id, err := result.LastInsertId()
 	e.ID = id
-	return nil
+	return err
 }
 
 func GetAllEvents() ([]Event, error) {
