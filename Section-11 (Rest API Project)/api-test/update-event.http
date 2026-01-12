@@ -1,5 +1,6 @@
 PUT http://localhost:8080/events/1
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGV4YW1wbGUuY29tIiwiZXhwIjoxNzY4MjA1MjgyLCJ1c2VySWQiOjJ9.ge-94kedHhp9Zq8TDao1ivVIxT2L5n-pfBEPqwbH7nk
 
 {
     "Name"        :"updated test event",    
